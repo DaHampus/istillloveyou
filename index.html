@@ -19,7 +19,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            font-family: 'Press Start 2P', monospace; /* Minecraft-like font */
+            font-family: 'Press Start 2P', monospace;
         }
 
         .crt-screen {
@@ -141,7 +141,7 @@
 </head>
 <body>
     <div class="crt-screen">
-        <div class="crt-text" id="glitch-text">I STILL LOVE YOU!</div> //EDIT THIS TEXT!
+        <div class="crt-text" id="glitch-text">I STILL LOVE YOU!</div>
         <canvas class="noise" id="noise-canvas"></canvas>
         <div class="film-grain"></div>
     </div>
@@ -156,10 +156,9 @@
         }
 
         function glitch() {
-            const textArray = originalText.split(''); // Split original text into an array
-            const glitchCount = Math.floor(Math.random() * 5) + 1; // Number of characters to glitch
-
-            // Create a copy of the array to apply glitches without mutating the original text
+            const textArray = originalText.split('');
+            const glitchCount = Math.floor(Math.random() * 5) + 1;
+            
             let glitchedTextArray = [...textArray];
 
             // Apply random glitch characters at random positions
@@ -168,11 +167,10 @@
                 glitchedTextArray[randomIndex] = getRandomChar();
             }
 
-            // Join the array back into a string and set it as the text content
             glitchText.textContent = glitchedTextArray.join('');
 
             // Reset the text to the original after a random delay
-            const resetDelay = Math.floor(Math.random() * 100) + 50; // Shortened delay for faster resets
+            const resetDelay = Math.floor(Math.random() * 100) + 50;
             setTimeout(() => {
                 glitchText.textContent = originalText;
             }, resetDelay);
@@ -180,11 +178,10 @@
 
         // Run glitch effect more frequently
         setInterval(() => {
-            if (Math.random() < 0.6) { // Increased chance to glitch
+            if (Math.random() < 0.6) {
                 glitch();
             }
-        }, Math.floor(Math.random() * 150) + 100); // Adjusted interval timing
-
+        }, Math.floor(Math.random() * 150) + 100);
         // Canvas noise effect
         const canvas = document.getElementById('noise-canvas');
         const ctx = canvas.getContext('2d');
@@ -203,7 +200,7 @@
             const data = imageData.data;
 
             for (let i = 0; i < data.length; i += 4) {
-                const value = Math.random() * 255; // Generate random grayscale value
+                const value = Math.random() * 255;
                 data[i] = value;     // Red
                 data[i + 1] = value; // Green
                 data[i + 2] = value; // Blue
